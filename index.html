@@ -1,0 +1,526 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Yearly Passing Grade Calculator</title>
+
+  <style>
+
+    :root {
+
+      --bg: #f7f7f8;
+
+      --card: #ffffff;
+
+      --text: #1f2937;
+
+      --muted: #6b7280;
+
+      --border: #d1d5db;
+
+      --accent: #2563eb;
+
+      --good: #047857;
+
+      --warn: #b45309;
+
+      --bad: #b91c1c;
+
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+
+      margin: 0;
+
+      font-family: Arial, Helvetica, sans-serif;
+
+      background: var(--bg);
+
+      color: var(--text);
+
+      line-height: 1.4;
+
+    }
+
+    .wrap {
+
+      max-width: 760px;
+
+      margin: 0 auto;
+
+      padding: 24px 16px;
+
+    }
+
+    .card {
+
+      background: var(--card);
+
+      border: 1px solid var(--border);
+
+      border-radius: 16px;
+
+      padding: 22px;
+
+      box-shadow: 0 8px 24px rgba(0,0,0,.06);
+
+    }
+
+    h1 {
+
+      margin: 0 0 8px;
+
+      font-size: clamp(1.5rem, 4vw, 2rem);
+
+    }
+
+    .sub {
+
+      margin: 0 0 20px;
+
+      color: var(--muted);
+
+      font-size: 1rem;
+
+    }
+
+    .grid {
+
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 12px;
+
+      margin: 18px 0;
+
+    }
+
+    label {
+
+      display: block;
+
+      font-weight: 700;
+
+      margin-bottom: 6px;
+
+    }
+
+    input, select {
+
+      width: 100%;
+
+      padding: 12px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 10px;
+
+      font-size: 1.05rem;
+
+      background: white;
+
+    }
+
+    input:focus, select:focus {
+
+      outline: 3px solid rgba(37,99,235,.18);
+
+      border-color: var(--accent);
+
+    }
+
+    .results {
+
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 12px;
+
+      margin-top: 18px;
+
+    }
+
+    .resultBox {
+
+      border: 1px solid var(--border);
+
+      border-radius: 14px;
+
+      padding: 16px;
+
+      background: #fafafa;
+
+    }
+
+    .resultBox .label {
+
+      font-size: .92rem;
+
+      color: var(--muted);
+
+      margin-bottom: 4px;
+
+    }
+
+    .resultBox .value {
+
+      font-size: 2rem;
+
+      font-weight: 800;
+
+    }
+
+    #message {
+
+      margin-top: 16px;
+
+      padding: 14px 16px;
+
+      border-radius: 12px;
+
+      font-weight: 700;
+
+      background: #eef2ff;
+
+      color: #3730a3;
+
+    }
+
+    .good { background: #ecfdf5 !important; color: var(--good) !important; }
+
+    .warn { background: #fffbeb !important; color: var(--warn) !important; }
+
+    .bad { background: #fef2f2 !important; color: var(--bad) !important; }
+
+    .buttons {
+
+      display: flex;
+
+      gap: 10px;
+
+      margin-top: 16px;
+
+      flex-wrap: wrap;
+
+    }
+
+    button {
+
+      border: 0;
+
+      border-radius: 10px;
+
+      padding: 11px 14px;
+
+      font-weight: 700;
+
+      cursor: pointer;
+
+      background: var(--accent);
+
+      color: white;
+
+      font-size: 1rem;
+
+    }
+
+    button.secondary {
+
+      background: #e5e7eb;
+
+      color: #111827;
+
+    }
+
+    .note {
+
+      margin-top: 16px;
+
+      color: var(--muted);
+
+      font-size: .92rem;
+
+    }
+
+    @media (max-width: 640px) {
+
+      .grid, .results { grid-template-columns: 1fr; }
+
+      .card { padding: 18px; }
+
+    }
+
+    @media print {
+
+      body { background: white; }
+
+      .card { box-shadow: none; }
+
+      .buttons { display: none; }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <main class="wrap">
+
+    <section class="card" aria-labelledby="title">
+
+      <h1 id="title">Yearly Passing Grade Calculator</h1>
+
+      <p class="sub">Enter your first three marking period grades to see the minimum fourth marking period grade needed to finish the year with at least a 60 average.</p>
+
+
+
+
+      <div>
+
+        <label for="subject">Class</label>
+
+        <select id="subject">
+
+          <option>ELA</option>
+
+          <option>Math</option>
+
+          <option>Science</option>
+
+          <option>Social Studies</option>
+
+          <option>Other</option>
+
+        </select>
+
+      </div>
+
+
+
+
+      <div class="grid">
+
+        <div>
+
+          <label for="q1">Marking Period 1</label>
+
+          <input id="q1" type="number" min="0" max="100" step="1" inputmode="decimal" placeholder="Example: 75" />
+
+        </div>
+
+        <div>
+
+          <label for="q2">Marking Period 2</label>
+
+          <input id="q2" type="number" min="0" max="100" step="1" inputmode="decimal" placeholder="Example: 68" />
+
+        </div>
+
+        <div>
+
+          <label for="q3">Marking Period 3</label>
+
+          <input id="q3" type="number" min="0" max="100" step="1" inputmode="decimal" placeholder="Example: 72" />
+
+        </div>
+
+      </div>
+
+
+
+
+      <div class="results" aria-live="polite">
+
+        <div class="resultBox">
+
+          <div class="label">Current 3-MP Average</div>
+
+          <div id="currentAverage" class="value">—</div>
+
+        </div>
+
+        <div class="resultBox">
+
+          <div class="label">Minimum Needed in MP4</div>
+
+          <div id="neededGrade" class="value">—</div>
+
+        </div>
+
+      </div>
+
+
+
+
+      <div id="message">Enter all three grades to calculate the result.</div>
+
+
+
+
+      <div class="buttons">
+
+        <button type="button" onclick="window.print()">Print</button>
+
+        <button type="button" class="secondary" onclick="clearForm()">Clear</button>
+
+      </div>
+
+
+
+
+      <p class="note">Formula used: 240 − MP1 − MP2 − MP3. The result is rounded up to the next whole number and never displays below 0.</p>
+
+    </section>
+
+  </main>
+
+
+
+
+  <script>
+
+    const inputs = [document.getElementById('q1'), document.getElementById('q2'), document.getElementById('q3')];
+
+    const currentAverage = document.getElementById('currentAverage');
+
+    const neededGrade = document.getElementById('neededGrade');
+
+    const message = document.getElementById('message');
+
+
+
+
+    function getGrades() {
+
+      return inputs.map(input => {
+
+        const value = Number(input.value);
+
+        return input.value === '' || Number.isNaN(value) ? null : value;
+
+      });
+
+    }
+
+
+
+
+    function setMessage(text, className) {
+
+      message.textContent = text;
+
+      message.className = className || '';
+
+    }
+
+
+
+
+    function calculate() {
+
+      const grades = getGrades();
+
+
+
+
+      if (grades.some(g => g === null)) {
+
+        currentAverage.textContent = '—';
+
+        neededGrade.textContent = '—';
+
+        setMessage('Enter all three grades to calculate the result.', '');
+
+        return;
+
+      }
+
+
+
+
+      if (grades.some(g => g < 0 || g > 100)) {
+
+        currentAverage.textContent = '—';
+
+        neededGrade.textContent = '—';
+
+        setMessage('Grades should be between 0 and 100.', 'bad');
+
+        return;
+
+      }
+
+
+
+
+      const sum = grades.reduce((a, b) => a + b, 0);
+
+      const avg = sum / 3;
+
+      const rawNeeded = 240 - sum;
+
+      const minimumNeeded = Math.max(0, Math.ceil(rawNeeded));
+
+
+
+
+      currentAverage.textContent = avg.toFixed(1);
+
+      neededGrade.textContent = minimumNeeded;
+
+
+
+
+      if (minimumNeeded === 0) {
+
+        setMessage('You are already on pace to finish with at least a 60 average.', 'good');
+
+      } else if (minimumNeeded <= 100) {
+
+        setMessage(`You need at least a ${minimumNeeded} in Marking Period 4 to finish the year with a 60 average.`, minimumNeeded >= 80 ? 'warn' : 'good');
+
+      } else {
+
+        setMessage(`You would need a ${minimumNeeded}, which is above 100. Talk with your teacher or counselor about available supports and options.`, 'bad');
+
+      }
+
+    }
+
+
+
+
+    function clearForm() {
+
+      inputs.forEach(input => input.value = '');
+
+      calculate();
+
+      inputs[0].focus();
+
+    }
+
+
+
+
+    inputs.forEach(input => input.addEventListener('input', calculate));
+
+    calculate();
+
+  </script>
+
+</body>
+
+</html>
