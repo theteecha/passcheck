@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PassCheck✅</title>
+  <style>
+    :root {
+      --bg: #f7f7f8;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #d1d5db;
+      --accent: #2563eb;
+      --good: #047857;
+      --warn: #b45309;
+      --bad: #b91c1c;
+      --soft-blue: #eef2ff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 24px 16px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.06);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      letter-spacing: -.03em;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+    }
+
+    .sub {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    
+    .brandTag {
+      display: inline-block;
+      margin-bottom: 12px;
+      background: #dbeafe;
+      color: #1d4ed8;
+      font-weight: 800;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: .85rem;
+    }
+
+
+    .sectionTitle {
+      margin: 22px 0 8px;
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+
+    .helper {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .goalRow {
+      display: grid;
+      grid-template-columns: 1fr 150px;
+      gap: 12px;
+      align-items: end;
+      margin-bottom: 12px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin: 12px 0;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 1.05rem;
+      background: white;
+    }
+
+    input:focus, select:focus {
+      outline: 3px solid rgba(37,99,235,.18);
+      border-color: var(--accent);
+    }
+
+    .customGoalWrap {
+      display: none;
+    }
+
+    .customGoalWrap.show {
+      display: block;
+    }
+
+    .results {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .resultBox {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      background: #fafafa;
+      min-height: 104px;
+    }
+
+    .resultBox .label {
+      font-size: .9rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+      font-weight: 700;
+    }
+
+    .resultBox .value {
+      font-size: 1.8rem;
+      font-weight: 800;
+    }
+
+    #message {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      font-weight: 700;
+      background: var(--soft-blue);
+      color: #3730a3;
+    }
+
+    .good { background: #ecfdf5 !important; color: var(--good) !important; }
+    .warn { background: #fffbeb !important; color: var(--warn) !important; }
+    .bad { background: #fef2f2 !important; color: var(--bad) !important; }
+
+    .progressList {
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    .progressList li {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 12px;
+      background: #fafafa;
+      font-size: .95rem;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: 0;
+      border-radius: 10px;
+      padding: 11px 14px;
+      font-weight: 700;
+      cursor: pointer;
+      background: var(--accent);
+      color: white;
+      font-size: 1rem;
+    }
+
+    button.secondary {
+      background: #e5e7eb;
+      color: #111827;
+    }
+
+    .note {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    @media (max-width: 760px) {
+      .goalRow, .grid, .results {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 18px;
+      }
+    }
+
+    @media print {
+      body { background: white; }
+      .card { box-shadow: none; }
+      .buttons { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <section class="card" aria-labelledby="title">
+      <div class="brandTag">Student Grade Planning Tool</div><h1 id="title">PassCheck✅</h1>
+      <p class="sub">Track your progress, test different grade scenarios, and see what you need to reach your yearly goal.</p>
+
+      <div>
+        <label for="subject">Class</label>
+        <select id="subject">
+          <option>ELA</option>
+          <option>Math</option>
+          <option>Science</option>
+          <option>Social Studies</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="sectionTitle">Goal</div>
+      <p class="helper">Choose the yearly average you are aiming for.</p>
+
+      <div class="goalRow">
+        <div>
+          <label for="goalSelect">Yearly average goal</label>
+          <select id="goalSelect">
+            <option value="60">60 - Passing</option>
+            <option value="70">70 - C average</option>
+            <option value="80">80 - B average</option>
+            <option value="90">90 - A average</option>
+            <option value="custom">Custom goal</option>
+          </select>
+        </div>
+
+        <div id="customGoalWrap" class="customGoalWrap">
+          <label for="customGoal">Custom</label>
+          <input id="customGoal" type="number" min="0" max="100" step="1" inputmode="decimal" placeholder="Example: 85" />
+        </div>
+      </div>
+
+      <div class="sectionTitle">Grades</div>
+      <p class="helper">Enter completed marking periods. You may also enter hoped-for future grades to test different scenarios.</p>
+
+      <div class="grid">
+        <div>
+          <label for="q1">MP1</label>
+          <input id="q1" type="number" min="0" max="100" step="1" inputmode="decimal" placeholder="Example: 81" />
+        </div>
+        <div>
+          <label for="q2">MP2</label>
+          <input id="q2" type="number" min="0" max="100" step="1" inputmode="decimal" placeholder="Optional" />
+        </div>
+        <div>
+          <label for="q3">MP3</label>
+          <input id="q3" type="number" min="0" max="100" step="1" inputmode="decimal" placeholder="Optional" />
+        </div>
+        <div>
+          <label for="q4">MP4</label>
+          <input id="q4" type="number" min="0" max="100" step="1" inputmode="decimal" placeholder="Optional" />
+        </div>
+      </div>
+
+      <div class="results" aria-live="polite">
+        <div class="resultBox">
+          <div class="label">Entered Average</div>
+          <div id="enteredAverage" class="value">—</div>
+        </div>
+        <div class="resultBox">
+          <div class="label">Needed Going Forward</div>
+          <div id="neededAverage" class="value">—</div>
+        </div>
+        <div class="resultBox">
+          <div class="label">Projected Final Average</div>
+          <div id="projectedAverage" class="value">—</div>
+        </div>
+      </div>
+
+      <div id="message">Enter at least one grade to calculate the result.</div>
+
+      <ul id="progressList" class="progressList" aria-live="polite"></ul>
+
+      <div class="buttons">
+        <button type="button" onclick="window.print()">Print</button>
+        <button type="button" class="secondary" onclick="clearForm()">Clear</button>
+      </div>
+
+      <p class="note">Formula used: target total points = yearly goal × 4. The calculator subtracts entered grades and divides the remaining points by the number of blank marking periods.</p>
+    </section>
+  </main>
+
+  <script>
+    const inputs = [
+      document.getElementById('q1'),
+      document.getElementById('q2'),
+      document.getElementById('q3'),
+      document.getElementById('q4')
+    ];
+
+    const goalSelect = document.getElementById('goalSelect');
+    const customGoalWrap = document.getElementById('customGoalWrap');
+    const customGoal = document.getElementById('customGoal');
+
+    const enteredAverage = document.getElementById('enteredAverage');
+    const neededAverage = document.getElementById('neededAverage');
+    const projectedAverage = document.getElementById('projectedAverage');
+    const message = document.getElementById('message');
+    const progressList = document.getElementById('progressList');
+
+    function getGoal() {
+      if (goalSelect.value === 'custom') {
+        const value = Number(customGoal.value);
+        return customGoal.value === '' || Number.isNaN(value) ? null : value;
+      }
+
+      return Number(goalSelect.value);
+    }
+
+    function getGrades() {
+      return inputs.map((input, index) => {
+        const value = Number(input.value);
+        return {
+          label: `MP${index + 1}`,
+          value: input.value === '' || Number.isNaN(value) ? null : value
+        };
+      });
+    }
+
+    function formatNumber(value) {
+      if (Number.isInteger(value)) return String(value);
+      return value.toFixed(1);
+    }
+
+    function setMessage(text, className) {
+      message.textContent = text;
+      message.className = className || '';
+    }
+
+    function setProgressItems(items) {
+      progressList.innerHTML = '';
+
+      items.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        progressList.appendChild(li);
+      });
+    }
+
+    function calculate() {
+      customGoalWrap.classList.toggle('show', goalSelect.value === 'custom');
+
+      const goal = getGoal();
+      const gradeObjects = getGrades();
+      const enteredGrades = gradeObjects.filter(g => g.value !== null);
+      const blankGrades = gradeObjects.filter(g => g.value === null);
+
+      enteredAverage.textContent = '—';
+      neededAverage.textContent = '—';
+      projectedAverage.textContent = '—';
+      setProgressItems([]);
+
+      if (goal === null) {
+        setMessage('Enter a custom goal to calculate the result.', '');
+        return;
+      }
+
+      if (goal < 0 || goal > 100) {
+        setMessage('The yearly average goal should be between 0 and 100.', 'bad');
+        return;
+      }
+
+      if (enteredGrades.length === 0) {
+        setMessage('Enter at least one grade to calculate the result.', '');
+        return;
+      }
+
+      if (enteredGrades.some(g => g.value < 0 || g.value > 100)) {
+        setMessage('Grades should be between 0 and 100.', 'bad');
+        return;
+      }
+
+      const enteredSum = enteredGrades.reduce((sum, g) => sum + g.value, 0);
+      const enteredAvg = enteredSum / enteredGrades.length;
+      const targetTotal = goal * 4;
+      const remainingPoints = targetTotal - enteredSum;
+      const remainingCount = blankGrades.length;
+
+      enteredAverage.textContent = enteredAvg.toFixed(1);
+
+      if (remainingCount === 0) {
+        const finalAverage = enteredSum / 4;
+        projectedAverage.textContent = finalAverage.toFixed(1);
+        neededAverage.textContent = 'Done';
+
+        if (finalAverage >= goal) {
+          setMessage(`Your final yearly average is ${finalAverage.toFixed(1)}. You reached your goal of ${formatNumber(goal)}.`, 'good');
+        } else {
+          const shortBy = goal - finalAverage;
+          setMessage(`Your final yearly average is ${finalAverage.toFixed(1)}. That is ${shortBy.toFixed(1)} points below your goal of ${formatNumber(goal)}.`, 'bad');
+        }
+
+        setProgressItems([
+          `Total points earned: ${formatNumber(enteredSum)} out of ${formatNumber(targetTotal)} needed for your goal.`
+        ]);
+
+        return;
+      }
+
+      const neededRaw = remainingPoints / remainingCount;
+      const neededRounded = Math.max(0, Math.ceil(neededRaw));
+      const projectedIfNeeded = (enteredSum + (neededRounded * remainingCount)) / 4;
+
+      neededAverage.textContent = neededRounded;
+      projectedAverage.textContent = projectedIfNeeded.toFixed(1);
+
+      const remainingLabels = blankGrades.map(g => g.label).join(', ');
+
+      if (neededRounded === 0) {
+        setMessage(`You are already on pace to finish with at least a ${formatNumber(goal)} yearly average.`, 'good');
+      } else if (neededRounded <= 100) {
+        setMessage(`You need to average at least ${neededRounded} across ${remainingLabels} to finish with a ${formatNumber(goal)} yearly average.`, neededRounded >= 85 ? 'warn' : 'good');
+      } else {
+        setMessage(`You would need to average ${neededRounded} across ${remainingLabels}, which is above 100. Consider adjusting the goal or talking with your teacher or counselor about available options.`, 'bad');
+      }
+
+      const items = [
+        `Entered points so far: ${formatNumber(enteredSum)}.`,
+        `Points needed for goal: ${formatNumber(targetTotal)}.`,
+        `Remaining marking periods: ${remainingLabels}.`
+      ];
+
+      if (remainingCount > 1) {
+        items.push(`Example plan: about ${neededRounded} in each remaining marking period.`);
+      } else {
+        items.push(`Final marking period target: at least ${neededRounded}.`);
+      }
+
+      setProgressItems(items);
+    }
+
+    function clearForm() {
+      inputs.forEach(input => input.value = '');
+      customGoal.value = '';
+      goalSelect.value = '60';
+      calculate();
+      inputs[0].focus();
+    }
+
+    inputs.forEach(input => input.addEventListener('input', calculate));
+    goalSelect.addEventListener('change', calculate);
+    customGoal.addEventListener('input', calculate);
+
+    calculate();
+  </script>
+</body>
+</html>
